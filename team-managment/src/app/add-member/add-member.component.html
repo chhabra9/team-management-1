@@ -1,0 +1,30 @@
+<div class="abc">
+    <h1>Add Member</h1>
+<form [formGroup]="memberForm">
+<div class="example-form-fields">
+<div class=" name">
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName"/>
+    </mat-form-field>
+</div>
+<mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput formControlName="lastName"/>
+</mat-form-field>
+</div>
+<mat-form-field class="example-full-width ">
+    <mat-label>Job Title</mat-label>
+    <input matInput formControlName="jobTitle" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width ">
+    <mat-label>status</mat-label>
+    <input matInput formControlName="status" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width ">
+    <mat-label>team</mat-label>
+    <input matInput formControlName="team" />
+  </mat-form-field>
+</form>
+<button type="submit" mat-raised-button color="primary" (click)="addMember()" [disabled]="hasError()">Add-member</button>
+</div>
