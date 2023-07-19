@@ -63,5 +63,7 @@
   >
 </form>
 <mat-error class="no-bottom" *ngIf="errorMessage">{{errorMessage}}</mat-error>
+<p>Already a User click <a  routerLink="/login">here</a></p>
+
 <button mat-raised-button color="primary" [disabled]="hasError()" (click)='createUser()'>Submit</button>
 </div>

@@ -6,9 +6,17 @@ import { User } from '../interface/user.interface';
   providedIn: 'root'
 })
 export class AuthService {
-
+  LoggedIn:Boolean=false;
   constructor(private http : HttpClient) { }
     registrationService(user:User){
-      return this.http.post<User>('http://localhost:3000/auth/register',user)
+      this.LoggedIn=true;
+      return this.http.post('http://localhost:3000/auth/register',user)
+   }
+   loginService(email:any,password:any){
+    this.LoggedIn=true;
+    return this.http.post('http://localhost:3000/auth/login',{email,password})
+ }  
+   isloggedIn(){
+    return this.LoggedIn;
    }
 }

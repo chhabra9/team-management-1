@@ -1,6 +1,5 @@
 import { Router } from "express";
 import * as uuid from 'uuid';
-
 const route:Router=Router();
 const team:any[]=[
     {id:'1',firstName:"abc",lastName:"xyz",jobTitle:"mechanic",status:"onboard",team:"artizens"},

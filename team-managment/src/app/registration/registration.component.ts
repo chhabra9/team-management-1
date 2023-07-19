@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { User } from '../interface/user.interface';
@@ -9,18 +9,25 @@ import { Router } from '@angular/router';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements OnInit{
   constructor(private fb: FormBuilder,private authService:AuthService,private router: Router) { }
   errorMessage!:string;
+  registrationForm!:FormGroup;
   passwordExp=/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%&*])[A-Za-z\d@@$!%*?&]{8,}$/;
-  registrationForm= this.fb.group({
+  hide = true;
+  ngOnInit(): void {
+    this.registrationForm= this.fb.group({
       firstName: ['',Validators.required],
       lastName: [''],
       email: ['',[Validators.required,Validators.email]],
       phoneNumber:['',Validators.required],
       password: ['',[Validators.required,Validators.pattern(this.passwordExp)]]
   })
-  hide = true;
+  this.registrationForm.valueChanges.subscribe(() => {
+    this.errorMessage = '';
+  });
+  }
+
   get firstName() { return this.registrationForm.get('firstName'); }
   get phoneNumber() { return this.registrationForm.get('phoneNumber'); } 
   get email() { return this.registrationForm.get('email'); } 

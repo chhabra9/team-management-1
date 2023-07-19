@@ -1,42 +1,15 @@
 
 <div class="abc">
-    <h1>Registration Form</h1>
+    <h1>Login Form</h1>
 <form [formGroup]="loginForm">
-  <div class="example-form-fields">
-    <div class="name">
-      <mat-form-field  >
-        <mat-label>First Name</mat-label>
-        <input matInput formControlName="firstName" />
-      </mat-form-field>
-      <mat-error class="no-bottom"
-        *ngIf="firstName?.errors?.['required'] &&(firstName?.touched||firstName?.dirty)"
-        >First Name is Required</mat-error>
-      </div>
-    <div>
-    <mat-form-field>
-      <mat-label> Last Name</mat-label>
-      <input matInput formControlName="lastName" />
-    </mat-form-field>
-  </div>
-</div>
   <mat-form-field class="example-full-width ">
     <mat-label>Email</mat-label>
     <input matInput formControlName="email" />
   </mat-form-field>
   <mat-error class="no-bottom"
     *ngIf="email?.errors?.['required'] &&(email?.touched||email?.dirty)"
-    >Email is required</mat-error
-  >
+    >Email is required</mat-error>
   <mat-error  class="no-bottom" *ngIf="email?.errors?.['email'] ">Enter a valid email</mat-error>
-
-  <mat-form-field class="example-full-width">
-    <mat-label>Phone Number</mat-label>
-    <input matInput formControlName="phoneNumber" />
-  </mat-form-field>
-  <mat-error class="no-bottom"
-    *ngIf="phoneNumber?.errors?.['required']&&(phoneNumber?.touched||phoneNumber?.dirty) "
-    >phone number is required</mat-error
-  >
   <mat-form-field class="example-full-width">
     <mat-label>Enter your password</mat-label>
     <input
@@ -62,5 +35,6 @@
     >password not meet the requirement</mat-error
   >
 </form>
-<button mat-raised-button color="primary" [disabled]="hasError()">Submit</button>
+<mat-error class="no-bottom" *ngIf="errorMessage">{{errorMessage}}</mat-error>
+<button mat-raised-button color="primary" [disabled]="hasError()" (click)="login()">Submit</button>
 </div>

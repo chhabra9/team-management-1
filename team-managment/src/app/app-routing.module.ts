@@ -5,25 +5,34 @@ import {MemberDetailsComponent} from './member-details/member-details.component'
 import { AddMemberComponent } from './add-member/add-member.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AuthGuard } from './gaurd/auth.guard';
 
 
 
 const routes: Routes = [
   {
     path: '',
-    component: RegistrationComponent
+    component: RegistrationComponent,
+  },
+  {
+    path:'login',
+    component:LoginComponent
   },
   {
     path:'member-details',
-    component: MemberDetailsComponent
+    component: MemberDetailsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'add-member',
-    component: AddMemberComponent
+    component: AddMemberComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'update-member/:id',
-    component:UpdateUserComponent
+    component:UpdateUserComponent,
+    canActivate:[AuthGuard]
+
   }
 
 ];

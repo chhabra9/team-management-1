@@ -13,7 +13,8 @@ if(result===undefined){
 })
 router.post('/login',(req,res)=>{
     const result=users.find(user=>user.email===req.body.email);
-    if(result===null){
+    console.log(result,'--req-body--',req.body);
+    if(result===undefined){
         res.status(400).json({message:"email not found"})
     }
     else if(users[users.indexOf(result)].password ===req.body.password ){
